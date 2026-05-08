@@ -1,4 +1,4 @@
-#include <windows.h>
+﻿#include <windows.h>
 DWORD WINAPI winmineCheat(LPVOID lpParam) {
     BYTE winmine_exe = 0x1000000;
     HWND hWnd = FindWindowA("MineSweeper", NULL);

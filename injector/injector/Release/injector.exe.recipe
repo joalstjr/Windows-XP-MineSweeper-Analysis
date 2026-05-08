@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\whals\Desktop\Windows-XP-MineSweeper-Analysis-main\dll\Release\dll.dll</FullPath>
+      <FullPath>C:\Users\whals\Desktop\Windows-XP-MineSweeper-Analysis-main\injector\Release\injector.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
