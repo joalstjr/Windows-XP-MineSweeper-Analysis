@@ -29,3 +29,4 @@
 |setGame| winmine.exe+3F90|
 |setTimer|winmine.exe+384F|
 |setMineCount|winmine.exe+2BC2|
+|setBoard|winmine.exe+367A|
