@@ -2,11 +2,6 @@
 #include <TlHelp32.h>
 #include <iostream>
 
-/**
- * Function wich find the process id of the specified process.
- * \param lpProcessName : name of the target process.
- * \return : the process id if the process is found else -1.
- */
 DWORD GetProcessByName(const char* lpProcessName)
 {
     char lpCurrentProcessName[255];
