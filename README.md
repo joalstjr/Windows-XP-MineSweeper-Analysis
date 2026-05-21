@@ -36,13 +36,37 @@
 | **Board Width** (맵 가로 크기) | `winmine.exe+56AC` | `BYTE` |
 | **Mine Count** (총 지뢰 개수) | `winmine.exe+56A4` | `DWORD` |
 
-### 3. Core Functions
-| Description | Offset (Address) | Action |
+### 3. Core & Cheat-Related Functions
+*게임의 핵심 플레이 루프, 메모리 변조 및 치트 기능 구현에 직접 활용되거나 분석된 핵심 함수 목록입니다.*
+
+| Function Name | Offset (Address) | Action (Description) |
 | :--- | :---: | :--- |
-| **setGame** | `winmine.exe+3F90` | 게임 초기화 및 맵 세팅 |
-| **setTimer** | `winmine.exe+384F` | 타이머 값 갱신 및 UI 출력 |
-| **setMineCount** | `winmine.exe+2BC2` | 남은 지뢰(깃발) 개수 갱신 |
-| **winCheck** | `winmine.exe+347C` | 게임 승리 조건 판정 (`arg=1` 시 승리) |
+| **WinMain** | `winmine.exe+21F0` | 프로그램 메인 엔트리 포인트 |
+| **MainWndProc** | `winmine.exe+1BC9` | 메인 윈도우 프로시저 (마우스/키보드 이벤트 및 메시지 처리) |
+| **setBoardFunc** | `winmine.exe+367A` | 지뢰 맵 생성 및 데이터 배열 초기화 루틴 |
+| **ProcessTileClick** | `winmine.exe+37E1` | 타일(셀) 클릭 시 내부 로직 처리 (지뢰 판별, 빈칸 확장 등) |
+| **OnFaceBtnClick** | `winmine.exe+140C` | 상단 스마일 버튼 클릭 이벤트 처리 (게임 리셋) |
+| **setSmileImg** | `winmine.exe+28D9` | 스마일 아이콘 상태 변경 (웃음, 놀람, 선글라스, 사망 이미지) |
+| **timereset** | `winmine.exe+346A` | 게임 타이머 변수 값을 0으로 초기화 |
+| **winCheck** | `winmine.exe+347C` | 게임 승리 조건(지뢰를 제외한 모든 칸 오픈) 충족 여부 판정 |
+| **ShowGameOverBoard** | `winmine.exe+2F80` | 지뢰 폭발(게임 오버) 시 맵 전체의 지뢰 위치를 강제로 노출 |
+| **setGame** | `winmine.exe+3F90` | 난이도 및 사용자 정의 설정에 따른 게임 초기화 세팅 |
+| **setTimer** | `winmine.exe+384F` | 타이머 값 갱신 및 UI 출력 제어 |
+| **setMineCount** | `winmine.exe+2BC2` | 남은 지뢰(깃발) 개수 계산 및 UI 업데이트 |
+
+### 4. Etc Functions
+*메뉴 바 UI 제어, 신기록 기록, 에러 핸들링 및 도움말 래퍼 등 부가 기능을 수행하는 함수 목록입니다.*
+
+| Function Name | Offset (Address) | Action (Description) |
+| :--- | :---: | :--- |
+| **registwinner** | `winmine.exe+1B81` | 최고 기록 달성 시 사용자 이름 입력 및 레지스트리 저장 |
+| **showwinnerboard** | `winmine.exe+1BAA` | 최고 기록(Best Times) 순위표 윈도우 출력 |
+| **setAllMenu** | `winmine.exe+1516` | 전체 상단 메뉴(초급, 중급, 고급 등) UI 상태 초기화 |
+| **setEachMenu** | `winmine.exe+3CC4` | 난이도 변경에 따른 개별 메뉴 체크 상태 활성화/비활성화 |
+| **ShowErrorMessage** | `winmine.exe+3950` | 게임 내 예외 상황 발생 시 에러 메시지 팝업 출력 |
+| **ShowHtmlHelpWrapper** | `winmine.exe+4062` | 게임 도움말(F1) 창 호출 래퍼 함수 |
+| **GetHtmlHelpControlPath** | `winmine.exe+40FB` | 도움말(CHM/HTML Help) 파일의 시스템 경로 탐색 |
+| **Stub1** | `winmine.exe+4006` | 내부 더미 또는 컴파일러 스텁(Stub) 함수 |
 
 ---
 
