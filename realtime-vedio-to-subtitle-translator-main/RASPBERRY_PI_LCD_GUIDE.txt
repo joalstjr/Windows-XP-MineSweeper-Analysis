@@ -1,0 +1,74 @@
+라즈베리파이 LCD 실행 방법
+==========================
+
+이 프로젝트는 LCD 클라이언트를 두 가지 방식으로 실행할 수 있습니다.
+
+* `fake_pi_lcd.py`: PC에서 창 모드로 테스트할 때 사용
+* `pi_lcd.py`: 실제 Raspberry Pi에서 실행할 때 사용
+
+
+1. 공통 준비
+-------------
+
+* `main.py`는 PC에서 실행합니다.
+* `pi_lcd.py` 또는 `fake_pi_lcd.py`는 LCD 쪽에서 실행합니다.
+* `.env` 에서 다음 포트를 맞춥니다.
+
+  * `SUBTITLE_PI_PORT=5005`
+  * `SUBTITLE_PC_COMMAND_PORT=5006`
+
+
+2. PC에서 테스트할 때
+---------------------
+
+기본값을 그대로 사용하면 됩니다.
+
+* `SUBTITLE_PC_IP=127.0.0.1`
+* `SUBTITLE_PI_IP=127.0.0.1`
+* `SUBTITLE_LCD_FULLSCREEN=0`
+
+실행 순서:
+
+1. `python main.py`
+2. `python fake_pi_lcd.py`
+
+이 모드에서는 별도 장비 없이 PC 창에서 자막 표시와 제어를 확인할 수 있습니다.
+
+
+3. Raspberry Pi에서 실행할 때
+------------------------------
+
+PC와 Raspberry Pi가 같은 네트워크에 있어야 합니다.
+
+PC 쪽 `.env` 예시:
+
+* `SUBTITLE_PI_IP=라즈베리파이_IP`
+* `SUBTITLE_PI_PORT=5005`
+
+Raspberry Pi 쪽 `.env` 예시:
+
+* `SUBTITLE_PC_IP=PC의_실제_IP`
+* `SUBTITLE_PI_PORT=5005`
+* `SUBTITLE_PC_COMMAND_PORT=5006`
+* `SUBTITLE_LCD_GEOMETRY=1024x600`
+* `SUBTITLE_LCD_FULLSCREEN=1`
+
+실행 순서:
+
+1. PC에서 `python main.py`
+2. Raspberry Pi에서 `python3 pi_lcd.py`
+
+
+4. 네트워크 역할
+----------------
+
+* PC -> LCD: UDP 5005, 자막 데이터 전송
+* LCD -> PC: UDP 5006, 언어 변경/재생/정지/탐색/단어 저장 명령 전송
+
+
+5. 문제 해결
+------------
+
+* 자막이 안 보이면 PC와 Pi의 IP 설정을 먼저 확인합니다.
+* 방화벽에서 UDP 5005, 5006 포트가 막혀 있지 않은지 확인합니다.
+* PC 테스트 모드에서는 `fake_pi_lcd.py`가 창 모드로 동작하므로 ESC 토글은 필요 없습니다.
