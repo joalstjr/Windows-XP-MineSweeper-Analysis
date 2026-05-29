@@ -1,8 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="hack/hack.vcxproj" Id="6e4be220-71b3-49f8-bca9-53bcfc24b9cf" />
-  <Project Path="injector/injector.vcxproj" Id="9648bc8c-f9b0-476d-acb8-b687b406ec86" />
-</Solution>

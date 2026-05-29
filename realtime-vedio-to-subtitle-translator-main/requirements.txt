@@ -1,0 +1,16 @@
+# Core application
+flask
+flask-cors
+python-dotenv
+requests
+PySide6
+
+# Media processing
+yt-dlp
+
+# Google Cloud
+google-auth
+google-cloud-firestore
+google-cloud-speech
+google-cloud-translate
+google-cloud-texttospeech
